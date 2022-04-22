@@ -19,6 +19,9 @@ public class MarkdownParse {
             if(openBracket == -1){
                 break;
             }
+            if(openParen == -1){
+                break;
+            }
 
             if(markdown.substring(closeBracket, openParen+1).equals("](")){
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
@@ -36,5 +39,7 @@ public class MarkdownParse {
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
 	    System.out.println(links);
+
+        System.out.println("Done!");
     }
 }
