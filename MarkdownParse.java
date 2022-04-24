@@ -22,6 +22,9 @@ public class MarkdownParse {
             if(openParen == -1){
                 break;
             }
+            if(closeBracket == -1){
+                break;
+            }
 
             if(markdown.substring(closeBracket, openParen+1).equals("](")){
                 toReturn.add(markdown.substring(openParen + 1, closeParen));
@@ -35,7 +38,7 @@ public class MarkdownParse {
 
 
     public static void main(String[] args) throws IOException {
-        Path fileName = Path.of("test-file.md");
+        Path fileName = Path.of(args[0]);
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
 	    System.out.println(links);
